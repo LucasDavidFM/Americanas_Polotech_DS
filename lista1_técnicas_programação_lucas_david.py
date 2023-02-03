@@ -414,36 +414,14 @@ def func_outliers(matriz):
   q1 = np.quantile(matriz, 0.25)
   q3 = np.quantile(matriz, 0.75)
   if np.any(matriz_out < q1) == True or np.any(matriz_out > q3) == True:
+    #Mostrar se possuem outliers
     print("´Possui Outliers")
     q1_filtro = matriz_out[matriz_out < q1]
     q3_filtro = matriz_out[matriz_out > q3]
     q_valores = np.concatenate((q1_filtro,q3_filtro), axis = 0)
     count_outliers = np.count_nonzero(((matriz_out < q1) | (matriz_out > q3) ))
+    #O total de outliers
     print(f'O total de outliers: {count_outliers}')
+    #Mostrar os valores outliers
     print(f'Os valores dos outliers: {q_valores}')
 
-matriz_out = np.random.randn(300,15)
-func_outliers(matriz_out)
-
-q1_filtro = matriz_out[matriz_out < q1]
-q3_filtro = matriz_out[matriz_out > q3]
-
-np.count_nonzero((matriz_out < q1))
-
-np.count_nonzero((matriz_out > q3))
-
-np.count_nonzero(((matriz_out < q1) | (matriz_out > q3) ))
-
-q1_filtro
-
-q3_filtro
-
-np.count_nonzero(matriz_out)
-
-matriz_out < q1
-
-# Matriz booleana
-print(np.any(matriz_out < q1))
-
-if np.any(matriz_out < q1) == True or np.any(matriz_out > q3) == True:
-  print("´Possui Outliers")
